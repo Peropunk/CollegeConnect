@@ -1,0 +1,271 @@
+.logo{
+  font-weight: bold;
+  font-size:large;
+}
+
+.black-text{
+  color: black;
+}
+
+.bllack-text{
+  color: black;
+  z-index: 2;
+}
+
+@media (max-width: 480px) {
+  .bllack-text {
+    font-size: 2.7rem; /* Even smaller for very small devices */
+    padding: 0 1.5rem; /* Maintain side margins */
+    line-height: 1.2; /* Slightly more spacing between lines */
+  }
+}
+
+.highlight{
+  color: #1350ff;
+}
+
+.container {
+  background-image: url('/bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  padding: 20px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: black;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+.register, .login {
+  
+  font-weight: bold;
+}
+
+.register {
+  background-color: black;
+  color: white;
+}
+
+.login {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #1350ff;
+  color: white;
+}
+
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  max-width: 800px;
+  height: 90vh;
+}
+
+.oval-background {
+  position: absolute;
+  width: 60%;
+  height: 40%;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  filter: blur(20px);
+  z-index: -3;
+}
+
+.black-text {
+  position: relative;
+  z-index: 1;
+}
+
+.slogan{
+  color: black;
+  font-size: medium;
+  z-index: 2;
+}
+
+.info-button {
+  background: rgba(115, 151, 255, 0.14);
+  color: black;
+  border: none;
+  border: 1px solid #1350ff; /* Replaces stroke-width and outline */
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  outline: none; /* Removes default focus outline */
+  transition: all 0.3s ease; /* Optional: for hover effects */
+}
+
+/* Optional hover state */
+.info-button:hover {
+  background: rgba(115, 151, 255, 0.25);
+}
+
+.cta-button {
+  background-color: #1350ff;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+  z-index: 5;
+}
+
+/* ... (keep your existing styles) ... */
+
+/* Hamburger menu styles */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+/* Mobile navigation container */
+.nav-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Mobile auth buttons - only visible in hamburger menu */
+.mobile-auth-buttons {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.mobile-auth-buttons .register {
+  background: none;
+  color: black;
+  border: 1px solid #1350ff;
+}
+
+.mobile-auth-buttons .login {
+  background: #1350ff;
+  color: white;
+}
+
+/* Desktop auth buttons - hidden on mobile */
+.desktop-auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* Responsive styles */
+@media (max-width: 767px) {
+  .hamburger {
+    display: block;
+  }
+  
+  .nav-container {
+    display: none;
+  }
+  
+  .nav-container.open {
+    display: flex;
+  }
+  
+  .mobile-auth-buttons {
+    display: flex;
+  }
+  
+  .desktop-auth-buttons {
+    display: none;
+  }
+  
+  .nav-links {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+  }
+  
+  .register, .login {
+    width: 80%;
+    padding: 8px;
+  }
+}
+
+@media (min-width: 768px) {
+  .nav-container {
+    flex-direction: row;
+    width: auto;
+  }
+  
+  .mobile-auth-buttons {
+    display: none;
+  }
+  
+  .desktop-auth-buttons {
+    display: flex;
+  }
+  
+  .nav-links {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+
+
+
+  /* .hamburger {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .hamburger {
+      display: block;
+    }
+  
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      background: white;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      padding: 20px;
+    }
+  
+    .nav-links.open {
+      display: flex;
+    } */
+}
