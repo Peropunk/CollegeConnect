@@ -1,0 +1,545 @@
+const [currentAlumniIndex, setCurrentAlumniIndex] = useState(0);
+  const [currentStudentIndex, setCurrentStudentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  // Auto-advance slides
+  useEffect(() => {
+    let interval;
+    if (isAutoPlaying) {
+      interval = setInterval(() => {
+        setCurrentAlumniIndex(prev => (prev === alumniTestimonials.length - 1 ? 0 : prev + 1));
+        setCurrentStudentIndex(prev => (prev === studentTestimonials.length - 1 ? 0 : prev + 1));
+      }, 5000);
+    }
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, alumniTestimonials.length, studentTestimonials.length]);
+
+  const goToAlumniSlide = (index) => {
+    setCurrentAlumniIndex(index);
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 10000);
+  };
+
+  const goToStudentSlide = (index) => {
+    setCurrentStudentIndex(index);
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 10000);
+  };
+
+  const nextAlumniSlide = () => {
+    setCurrentAlumniIndex(prev => (prev === alumniTestimonials.length - 1 ? 0 : prev + 1));
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 10000);
+  };
+
+  const prevAlumniSlide = () => {
+    setCurrentAlumniIndex(prev => (prev === 0 ? alumniTestimonials.length - 1 : prev - 1));
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 10000);
+  };
+
+  const nextStudentSlide = () => {
+    setCurrentStudentIndex(prev => (prev === studentTestimonials.length - 1 ? 0 : prev + 1));
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 10000);
+  };
+
+  const prevStudentSlide = () => {
+    setCurrentStudentIndex(prev => (prev === 0 ? studentTestimonials.length - 1 : prev - 1));
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 10000);
+  };
+
+  return (
+    <section className="testimonial-section">
+      <div className="testimonial-header">
+        <h2>Our Community Stories</h2>
+        <div className="underline"></div>
+        <p>Hear from both alumni mentors and the students they've helped</p>
+      </div>
+
+      <div className="testimonial-container">
+        {/* Alumni Column */}
+        <div className="testimonial-column alumni-column">
+          <h3 className="slider-title">Alumni Mentors</h3>
+          <p className="slider-subtitle">Experienced professionals guiding students</p>
+          
+          <div className="slider-container">
+            <button className="nav-btn prev-btn" onClick={prevAlumniSlide} aria-label="Previous alumni testimonial">
+              &lt;
+            </button>
+            
+            <div className="slider">
+              <div 
+                className="slider-track"
+                style={{
+                  transform: `translateX(-${currentAlumniIndex * 100}%)`,
+                  transition: 'transform 0.5s ease'
+                }}
+              >
+                {alumniTestimonials.map((testimonial) => (
+                  <div key={testimonial.id} className="slide">
+                    <div className="testimonial-card alumni-card">
+                      <p className="quote">"{testimonial.quote}"</p>
+                      <div className="student-info">
+                        <img src={testimonial.image} alt={testimonial.name} className="student-avatar" />
+                        <div className="student-details">
+                          <h3 className="student-name">{testimonial.name}</h3>
+                          <p className="student-college">{testimonial.college}</p>
+                          <p className="student-role">{testimonial.role}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <button className="nav-btn next-btn" onClick={nextAlumniSlide} aria-label="Next alumni testimonial">
+              &gt;
+            </button>
+          </div>
+
+          <div className="dots-container">
+            {alumniTestimonials.map((_, index) => (
+              <button
+                key={index}
+                className={`dot ${index === currentAlumniIndex ? 'active' : ''}`}
+                onClick={() => goToAlumniSlide(index)}
+                aria-label={`Go to alumni testimonial ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Student Column */}
+        <div className="testimonial-column student-column">
+          <h3 className="slider-title">Student Success</h3>
+          <p className="slider-subtitle">Students who achieved their dreams</p>
+          
+          <div className="slider-container">
+            <button className="nav-btn prev-btn" onClick={prevStudentSlide} aria-label="Previous student testimonial">
+              &lt;
+            </button>
+            
+            <div className="slider">
+              <div 
+                className="slider-track"
+                style={{
+                  transform: `translateX(-${currentStudentIndex * 100}%)`,
+                  transition: 'transform 0.5s ease'
+                }}
+              >
+                {studentTestimonials.map((testimonial) => (
+                  <div key={testimonial.id} className="slide">
+                    <div className="testimonial-card student-card">
+                      <p className="quote">"{testimonial.quote}"</p>
+                      <div className="student-info">
+                        <img src={testimonial.image} alt={testimonial.name} className="student-avatar" />
+                        <div className="student-details">
+                          <h3 className="student-name">{testimonial.name}</h3>
+                          <p className="student-college">{testimonial.college}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <button className="nav-btn next-btn" onClick={nextStudentSlide} aria-label="Next student testimonial">
+              &gt;
+            </button>
+          </div>
+
+          <div className="dots-container">
+            {studentTestimonials.map((_, index) => (
+              <button
+                key={index}
+                className={`dot ${index === currentStudentIndex ? 'active' : ''}`}
+                onClick={() => goToStudentSlide(index)}
+                aria-label={`Go to student testimonial ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default TestimonialSlider;
+
+/* Mobile-First Styles */
+.testimonial-section {
+  padding: 1.5rem 0.5rem;
+  background-color: #f8faff;
+  text-align: center;
+  overflow: hidden;
+}
+
+.testimonial-header h2 {
+  font-size: 1.5rem;
+  color: #0a2e7a;
+  margin-bottom: 0.75rem;
+}
+
+.testimonial-header .underline {
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, #1350ff, #6a8cff);
+  margin: 0 auto 0.75rem;
+  border-radius: 2px;
+}
+
+.testimonial-header p {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+  padding: 0 0.5rem;
+}
+
+.testimonial-container {
+  display: block;
+}
+
+.testimonial-column {
+  margin-bottom: 2rem;
+}
+
+.slider-title {
+  font-size: 1.3rem;
+  color: #0a2e7a;
+  margin-bottom: 0.5rem;
+}
+
+.slider-subtitle {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.slider-track {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.slide {
+  min-width: 100%;
+  flex-shrink: 0;
+  padding: 0 0.25rem;
+  box-sizing: border-box;
+}
+
+.testimonial-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 3px 10px rgba(19, 80, 255, 0.08);
+  margin: 0 auto;
+  width: 95%;
+}
+
+.alumni-card {
+  border-top: 3px solid #6a8cff;
+}
+
+.student-card {
+  border-top: 3px solid #1350ff;
+}
+
+.quote {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: #333;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.student-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.student-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(19, 80, 255, 0.1);
+}
+
+.student-details {
+  text-align: center;
+}
+
+.student-name {
+  font-size: 0.95rem;
+  color: #0a2e7a;
+  margin-bottom: 0.2rem;
+}
+
+.student-college {
+  font-size: 0.8rem;
+  color: #1350ff;
+  font-weight: 500;
+}
+
+.student-role {
+  font-size: 0.75rem;
+  color: #666;
+  font-style: italic;
+}
+
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  color: #1350ff;
+  font-size: 0.85rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: #1350ff;
+  color: white;
+}
+
+.prev-btn {
+  left: 2px;
+}
+
+.next-btn {
+  right: 2px;
+}
+
+.dots-container {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(19, 80, 255, 0.2);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: #1350ff;
+  transform: scale(1.1);
+}
+
+/* Tablet Styles */
+@media (min-width: 480px) {
+  .testimonial-section {
+    padding: 2rem 1rem;
+  }
+
+  .testimonial-header h2 {
+    font-size: 1.75rem;
+  }
+
+  .testimonial-header .underline {
+    width: 60px;
+  }
+
+  .testimonial-card {
+    padding: 1.25rem;
+    width: 90%;
+  }
+
+  .quote {
+    font-size: 0.9rem;
+  }
+
+  .student-info {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .student-details {
+    text-align: left;
+  }
+
+  .nav-btn {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* Desktop Styles - Single Column */
+@media (min-width: 768px) {
+  .testimonial-section {
+    padding: 3rem 2rem;
+  }
+
+  .testimonial-header h2 {
+    font-size: 2rem;
+  }
+
+  .testimonial-header p {
+    font-size: 1rem;
+  }
+
+  .testimonial-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .slider-title {
+    font-size: 1.5rem;
+  }
+
+  .slider-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .testimonial-card {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+
+  .quote {
+    font-size: 1rem;
+  }
+
+  .student-avatar {
+    width: 50px;
+    height: 50px;
+  }
+
+  .student-name {
+    font-size: 1.1rem;
+  }
+
+  .student-college {
+    font-size: 0.85rem;
+  }
+
+  .student-role {
+    font-size: 0.8rem;
+  }
+
+  .nav-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+
+  .prev-btn {
+    left: 10px;
+  }
+
+  .next-btn {
+    right: 10px;
+  }
+}
+
+/* Large Desktop Styles - Two Columns */
+@media (min-width: 1200px) {
+  .testimonial-section {
+    padding: 4rem 2rem;
+  }
+
+  .testimonial-header h2 {
+    font-size: 2.5rem;
+  }
+
+  .testimonial-container {
+    display: flex;
+    gap: 2rem;
+    max-width: 1400px;
+    justify-content: center;
+  }
+
+  .testimonial-column {
+    flex: 1;
+    max-width: 600px;
+    margin-bottom: 0;
+  }
+
+  .slider-container {
+    height: 100%;
+  }
+
+  .testimonial-card {
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.75rem;
+  }
+
+  .quote {
+    font-size: 1.05rem;
+  }
+
+  .student-avatar {
+    width: 55px;
+    height: 55px;
+  }
+
+  .nav-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .prev-btn {
+    left: -15px;
+  }
+
+  .next-btn {
+    right: -15px;
+  }
+}
+
+/* Extra Large Screens */
+@media (min-width: 1600px) {
+  .testimonial-container {
+    max-width: 1600px;
+    gap: 3rem;
+  }
+
+  .testimonial-card {
+    min-height: 300px;
+    padding: 2rem;
+  }
+}
+
+make this code responsive, better looking and better functional. Add a moving slideshow instead of slow moving cards

@@ -4,6 +4,8 @@ import ProblemSection from "./components/ProblemSection.jsx";
 import HowItWorks from "./components/HowItWorks.jsx";
 import WhyChooseUs from "./components/WhyChooseUs.jsx";
 import FAQSection from "./components/FAQSection.jsx";
+import TestimonialSlider from "./components/TestimonialSlider.jsx";
+
 
 
 function App() {
@@ -70,6 +72,7 @@ function App() {
     <HowItWorks/>
     <WhyChooseUs/>
     <FAQSection/>
+    <TestimonialSlider/>
     </>
   );
  
