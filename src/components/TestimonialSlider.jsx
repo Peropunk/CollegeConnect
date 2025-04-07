@@ -35,6 +35,14 @@ const TestimonialSlider = () => {
       role: 'Working professional',
       quote: 'As a first-gen student myself, I know how valuable guidance can be. I wish I had this resource when I was applying!',
       image: '/public/alumni/aditya.jpg'
+    },
+    {
+      id: 5,
+      name: 'Ratnesh Chaudhary',
+      college: 'Uiet kanpur ',
+      role: 'Working professional',
+      quote: 'Mentoring students through College Connect has been incredibly rewarding. I love helping the next generation navigate their academic journeys.',
+      image: '/public/alumni/ratnesh.jpg'
     }
   ];
 
@@ -42,24 +50,24 @@ const TestimonialSlider = () => {
   const studentTestimonials = [
     {
       id: 1,
-      name: 'Sarah Johnson',
-      college: 'Harvard University',
+      name: 'Priya Singh',
+      college: 'G.L bajaj institute of technology and management',
       quote: 'College Connect helped me navigate the complex admissions process. My mentor gave me insider tips that made all the difference!',
-      image: 'https://randomuser.me/api/portraits/women/44.jpg'
+      image: '/public/students/priya.jpg'
     },
     {
       id: 2,
-      name: 'Michael Chen',
-      college: 'Stanford University',
+      name: 'Harsh Narayan Nishad',
+      college: 'G.L bajaj institute of technology and management',
       quote: 'The 1:1 sessions were invaluable. I learned exactly what my dream school was looking for in applicants.',
-      image: 'https://randomuser.me/api/portraits/men/32.jpg'
+      image: '/public/students/harsh.png'
     },
     {
       id: 3,
-      name: 'Priya Patel',
-      college: 'MIT',
+      name: 'Rishav Raj',
+      college: 'G.L bajaj institute of technology and management',
       quote: 'Getting guidance from someone who had been through the process recently was game-changing. Worth every penny!',
-      image: 'https://randomuser.me/api/portraits/women/68.jpg'
+      image: '/public/students/rishav.jpeg'
     }
   ];
 
