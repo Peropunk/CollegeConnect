@@ -18,7 +18,7 @@ const TestimonialSlider = () => {
       college: 'GL Bajaj Institute of Technology and Management Greater Noida',
       role: 'Working professional',
       quote: 'Sharing my experience with students reminds me of my own journey. The 1:1 connections make a real difference in their applications.',
-      image: '/public/alumni/atul.jpg'
+      image: '/alumni/atul.jpg'
     },
     {
       id: 3,
@@ -26,7 +26,7 @@ const TestimonialSlider = () => {
       college: 'K s institute of technology',
       role: 'Working professional',
       quote: 'As a first-gen student myself, I know how valuable guidance can be. I wish I had this resource when I was applying!',
-      image: '/public/alumni/chandan.jpg'
+      image: '/alumni/chandan.jpg'
     },
     {
       id: 4,
@@ -34,7 +34,7 @@ const TestimonialSlider = () => {
       college: 'Bakhtiyarpur college of engineering',
       role: 'Working professional',
       quote: 'As a first-gen student myself, I know how valuable guidance can be. I wish I had this resource when I was applying!',
-      image: '/public/alumni/aditya.jpg'
+      image: '/alumni/aditya.jpg'
     },
     {
       id: 5,
@@ -42,7 +42,7 @@ const TestimonialSlider = () => {
       college: 'Uiet kanpur ',
       role: 'Working professional',
       quote: 'Mentoring students through College Connect has been incredibly rewarding. I love helping the next generation navigate their academic journeys.',
-      image: '/public/alumni/ratnesh.jpg'
+      image: '/alumni/ratnesh.jpg'
     }
   ];
 
@@ -53,21 +53,21 @@ const TestimonialSlider = () => {
       name: 'Priya Singh',
       college: 'G.L bajaj institute of technology and management',
       quote: 'College Connect helped me navigate the complex admissions process. My mentor gave me insider tips that made all the difference!',
-      image: '/public/students/priya.jpg'
+      image: '/students/priya.jpg'
     },
     {
       id: 2,
       name: 'Harsh Narayan Nishad',
       college: 'G.L bajaj institute of technology and management',
       quote: 'The 1:1 sessions were invaluable. I learned exactly what my dream school was looking for in applicants.',
-      image: '/public/students/harsh.png'
+      image: '/students/harsh.png'
     },
     {
       id: 3,
       name: 'Rishav Raj',
       college: 'G.L bajaj institute of technology and management',
       quote: 'Getting guidance from someone who had been through the process recently was game-changing. Worth every penny!',
-      image: '/public/students/rishav.jpeg'
+      image: '/students/rishav.jpeg'
     }
   ];
 
