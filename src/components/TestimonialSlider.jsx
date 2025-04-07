@@ -10,7 +10,7 @@ const TestimonialSlider = () => {
       college: 'GL Bajaj Institute of Technology and Management Greater Noida',
       role: 'Working professional',
       quote: 'Mentoring students through College Connect has been incredibly rewarding. I love helping the next generation navigate their academic journeys.',
-      image: '/public/alumni/sumit.png'
+      image: '/alumni/sumit.png'
     },
     {
       id: 2,
